@@ -35,8 +35,7 @@ function create() {
     gameStatus = new GameStatus(this);
 
     // Enemy
-    enemy = new Enemy(this, gameStatus.levelUp());
-    console.log(enemy);
+    enemy = spawnNewEnemy(this);
 
     // Hero
     hero = new Hero(this);
@@ -98,8 +97,10 @@ function hit(_this) {
 /**
  * Spawns a new enemy with the new level status
  **/
-function spawnNewEnemy(_this, delay) {
-    return new Enemy(_this, gameStatus.levelUp());
+function spawnNewEnemy(_this) {
+    var enemyType = gameStatus.getLevel() % 5 == 0 ? 'boss' : 'minion';
+
+    return new Enemy(_this, gameStatus.levelUp(), enemyType);
 }
 
 /**

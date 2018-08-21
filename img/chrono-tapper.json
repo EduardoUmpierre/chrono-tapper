@@ -4,7 +4,7 @@
 			"image": "chrono-tapper.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1010,
+				"w": 1092,
 				"h": 490
 			},
 			"scale": 1,
@@ -157,6 +157,48 @@
 					}
 				},
 				{
+					"filename": "minion-idle-00.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 259,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "minion-idle-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 341,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
 					"filename": "sorcerer-attack-04.png",
 					"rotated": false,
 					"trimmed": false,
@@ -199,6 +241,69 @@
 					}
 				},
 				{
+					"filename": "minion-idle-02.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 423,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-00.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 505,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 587,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
 					"filename": "sorcerer-attack-06.png",
 					"rotated": false,
 					"trimmed": false,
@@ -234,10 +339,52 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 809,
-						"y": 1,
+						"x": 607,
+						"y": 203,
 						"w": 200,
 						"h": 200
+					}
+				},
+				{
+					"filename": "summoner-idle-02.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 669,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 751,
+						"y": 405,
+						"w": 80,
+						"h": 80
 					}
 				},
 				{
@@ -255,8 +402,8 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 607,
-						"y": 203,
+						"x": 809,
+						"y": 1,
 						"w": 200,
 						"h": 200
 					}
@@ -281,6 +428,174 @@
 						"w": 200,
 						"h": 200
 					}
+				},
+				{
+					"filename": "summoner-idle-04.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 833,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-06.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 915,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-08.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 915,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-07.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 997,
+						"y": 405,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-09.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 1011,
+						"y": 1,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-10.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 1011,
+						"y": 83,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-11.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 1011,
+						"y": 165,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "summoner-idle-05.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 79,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 79,
+						"h": 80
+					},
+					"frame": {
+						"x": 1011,
+						"y": 247,
+						"w": 79,
+						"h": 80
+					}
 				}
 			]
 		}
@@ -288,6 +603,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:952fe7a70e47eaf445c64235227fbaeb:afe120d1e5f6a54de4ce222cb3546e67:3512410719a56b6c8e326fbe2b14039b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:929ecc6764e4a49ec532601cd3373ffe:7f63b28d130ba6b2cf2ad93f0e200bb6:3512410719a56b6c8e326fbe2b14039b$"
 	}
 }

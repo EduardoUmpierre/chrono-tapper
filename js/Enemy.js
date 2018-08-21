@@ -1,7 +1,7 @@
 /**
  * Enemy class
  **/
-var Enemy = function(_this, health) {
+var Enemy = function (_this, health, type) {
     // Is dead flag
     this.isDead = false;
 
@@ -11,18 +11,16 @@ var Enemy = function(_this, health) {
 
     // Get the world bounds
     var bounds = _this.physics.world.bounds;
+    
+    // Set the enemies config
+    this.enemies = this.setEnemies();
 
     // Creates the sprite
-    this.sprite = _this.physics.add.sprite(bounds.centerX + 5, bounds.centerY + 5, 'chrono-tapper', 'sorcerer-attack-00.png');
+    this.sprite = this.setUpNewEnemy(_this, bounds, type);
     this.sprite.depth = 1;
 
     // Animations
-    var attackAnimationFrames = _this.anims.generateFrameNames('chrono-tapper', {
-        start: 0, end: 9, zeroPad: 2, prefix: 'sorcerer-attack-', suffix: '.png'
-    });
-
-    _this.anims.create({ key: 'sorcerer-attack', frames: attackAnimationFrames, frameRate: 6, repeat: -1, yoyo: true, delay: 1000, repeatDelay: 3000 });
-    this.sprite.anims.play('sorcerer-attack', true);
+    this.setUpAnimations(_this, bounds, type);
 
     // Creates the health bar
     this.healthBar = _this.add.text(0, 0, this.health + '/' + this.maxHealth, {
@@ -35,7 +33,7 @@ var Enemy = function(_this, health) {
     });
 
     // Aligns the health bar text
-    this.healthBar.setPosition((bounds.width / 2) - (this.healthBar.x / 2), 60);
+    this.healthBar.setPosition((bounds.width / 2) - (this.healthBar.x / 2), this.sprite.y - ((this.sprite.height * this.enemies[type].scale) / 2) - 20);
     this.healthBar.setOrigin(0.5, 0.5);
 
     // Set z alignment
@@ -45,14 +43,14 @@ var Enemy = function(_this, health) {
 /**
  * Updates the health bar with the current health
  **/
-Enemy.prototype.updateHealthBar = function() {
+Enemy.prototype.updateHealthBar = function () {
     this.healthBar.setText((this.health < 0 ? 0 : this.health) + '/' + this.maxHealth);
 }
 
 /**
  * Kills the enemy - plays the dead animation
  **/
-Enemy.prototype.die = function(_this) {
+Enemy.prototype.die = function (_this) {
     this.isDead = true;
 
     _this.tweens.add({
@@ -72,7 +70,7 @@ Enemy.prototype.die = function(_this) {
 /**
  * Enemy hit effect - plays the hit animation
  **/
-Enemy.prototype.hit = function(_this) {
+Enemy.prototype.hit = function (_this) {
     _this.tweens.add({
         targets: [this.sprite],
         alpha: { value: 1, duration: 100, ease: 'Power1' },
@@ -83,4 +81,54 @@ Enemy.prototype.hit = function(_this) {
             e.targets[0].alpha = 1;
         }
     });
+}
+
+/**
+ * 
+ * @param {object} _this
+ * @param {object} bounds 
+ * @param {string} type 
+ */
+Enemy.prototype.setUpNewEnemy = function (_this, bounds, type) {
+    return _this.physics.add.sprite(bounds.centerX + 5, bounds.centerY + 5, 'chrono-tapper', this.enemies[type].key + '-00.png');
+}
+
+/**
+ * 
+ * @param {object} _this
+ * @param {object} bounds
+ * @param {string} type 
+ */
+Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
+    var item = this.enemies[type];
+
+    var animationFrames = _this.anims.generateFrameNames('chrono-tapper', {
+        start: item.start, end: item.end, zeroPad: 2, prefix: item.key + '-', suffix: '.png'
+    });
+
+    _this.anims.create({ 
+        key: item.key, frames: animationFrames, frameRate: item.frameRate, repeat: item.repeat, yoyo: item.yoyo, 
+        delay: item.delay, repeatDelay: item.repeatDelay 
+    });
+
+    this.sprite.setScale(this.enemies[type].scale);
+    this.sprite.setPosition(bounds.centerX + this.enemies[type].offsetX, bounds.centerY + this.enemies[type].offsetY)
+
+    this.sprite.anims.play(this.enemies[type].key, true);
+}
+
+/**
+ * 
+ */
+Enemy.prototype.setEnemies = function() {
+    return {
+        boss: {
+            start: 0, end: 9, key: 'sorcerer-attack', frameRate: 6, repeat: -1, yoyo: true, delay: 1000, repeatDelay: 3000,
+            scale: 1, offsetX: 8, offsetY: 0
+        },
+        minion: {
+            start: 0, end: 2, key: 'minion-idle', frameRate: 1, repeat: -1, yoyo: true, delay: 1000, repeatDelay: 0,
+            scale: 1.25, offsetX: 0, offsetY: 25
+        }
+    };
 }

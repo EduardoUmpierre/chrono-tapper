@@ -3,8 +3,8 @@
  **/
 var Hero = function(_this) {
     // Hero stats
-    this.criticalChance = 5;
-    this.damage = 10;
+    this.criticalChance = 75;
+    this.damage = 1000;
 
     // World bounds
     var bounds = _this.physics.world.bounds;
@@ -18,7 +18,7 @@ var Hero = function(_this) {
         start: 0, end: 2, zeroPad: 2, prefix: 'hero-attack-', suffix: '.png'
     });
 
-    _this.anims.create({ key: 'hero-attack', frames: attackAnimationFrames, frameRate: 6, repeat: 0, yoyo: true });
+    _this.anims.create({ key: 'hero-attack', frames: attackAnimationFrames, frameRate: 8, repeat: 0, yoyo: true });
 }
 
 /**

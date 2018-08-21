@@ -13,3 +13,10 @@ GameStatus.prototype.levelUp = function() {
 
     return parseInt((this.level * 100) * (this.level * 0.10));
 }
+
+/**
+ * Returns the current level
+ */
+GameStatus.prototype.getLevel = function() {
+    return this.level;
+}
