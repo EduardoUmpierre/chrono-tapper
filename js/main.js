@@ -5,7 +5,7 @@ var game = new Phaser.Game({
     height: 339,
     physics: {
         default: 'arcade',
-        arcade: { debug: false }
+        arcade: { debug: true }
     },
     scene: {
         preload: preload,

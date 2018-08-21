@@ -33,7 +33,7 @@ var Enemy = function (_this, health, type) {
     });
 
     // Aligns the health bar text
-    this.healthBar.setPosition((bounds.width / 2) - (this.healthBar.x / 2), this.sprite.y - ((this.sprite.height * this.enemies[type].scale) / 2) - 20);
+    this.healthBar.setPosition(bounds.centerX + this.enemies[type].offsetX, this.sprite.y - ((this.sprite.height * this.enemies[type].scale) / 2));
     this.healthBar.setOrigin(0.5, 0.5);
 
     // Set z alignment
