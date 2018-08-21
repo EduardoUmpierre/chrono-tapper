@@ -1,0 +1,293 @@
+{
+	"textures": [
+		{
+			"image": "chrono-tapper.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1010,
+				"h": 490
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "sorcerer-attack-00.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 1,
+						"y": 203,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "hero-attack-00.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 84,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 84,
+						"h": 84
+					},
+					"frame": {
+						"x": 1,
+						"y": 405,
+						"w": 84,
+						"h": 84
+					}
+				},
+				{
+					"filename": "hero-attack-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 84,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 84,
+						"h": 84
+					},
+					"frame": {
+						"x": 87,
+						"y": 405,
+						"w": 84,
+						"h": 84
+					}
+				},
+				{
+					"filename": "hero-attack-02.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 84,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 84,
+						"h": 84
+					},
+					"frame": {
+						"x": 173,
+						"y": 405,
+						"w": 84,
+						"h": 84
+					}
+				},
+				{
+					"filename": "sorcerer-attack-02.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 203,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 203,
+						"y": 203,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-04.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 405,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-05.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 405,
+						"y": 203,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-06.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 607,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-07.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 809,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-08.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 607,
+						"y": 203,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "sorcerer-attack-09.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 809,
+						"y": 203,
+						"w": 200,
+						"h": 200
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:952fe7a70e47eaf445c64235227fbaeb:afe120d1e5f6a54de4ce222cb3546e67:3512410719a56b6c8e326fbe2b14039b$"
+	}
+}
