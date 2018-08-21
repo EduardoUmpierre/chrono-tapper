@@ -3,14 +3,15 @@
  **/
 var Hero = function (_this) {
     // Hero stats
-    this.criticalChance = 75;
-    this.damage = 1000;
+    this.criticalChance = 5;
+    this.damage = 1;
 
     // World bounds
     var bounds = _this.physics.world.bounds;
 
     // Sprite
     this.sprite = _this.physics.add.sprite(bounds.centerX, 270, 'chrono-tapper', 'hero-attack-00.png');
+    this.sprite.body.setAllowGravity(false);
     this.sprite.depth = 3;
 
     // Animations

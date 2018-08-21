@@ -5,7 +5,10 @@ var game = new Phaser.Game({
     height: 339,
     physics: {
         default: 'arcade',
-        arcade: { debug: true }
+        arcade: { 
+            gravity: { y: 800 },
+            debug: false
+         }
     },
     scene: {
         preload: preload,
@@ -20,6 +23,8 @@ var game = new Phaser.Game({
 function preload() {
     this.load.image('background', 'img/background.png');
     this.load.multiatlas('chrono-tapper', 'img/chrono-tapper.json', 'img');
+    // this.load.bitmapFont('small-yellow', 'fonts/yellow-font0.png', 'fonts/yellow-font0.fnt');
+    // this.load.bitmapFont('big-yellow', 'fonts/yellow-font1.png', 'fonts/yellow-font1.fnt');
 }
 
 /**
@@ -31,8 +36,15 @@ function create() {
     background.displayOriginX = 0;
     background.displayOriginY = 0;
 
+    // Ground
+    ground = this.physics.add.sprite(256, 415, 'background').setVisible(false).setImmovable();
+    ground.body.setAllowGravity(false);
+
     // Status
     gameStatus = new GameStatus(this);
+
+    // HUD
+    hud = new HUD(this, gameStatus);
 
     // Enemy
     enemy = spawnNewEnemy(this);
@@ -55,6 +67,9 @@ function create() {
  **/
 function update() {
     enemy.updateHealthBar();
+    hud.updateCoinBalance(gameStatus.getCoins());
+
+    this.physics.add.collider(ground, enemy.getCoinGroup());
 }
 
 /**
@@ -84,7 +99,7 @@ function hit(_this) {
 
         // If the enemy is out of health, destroys it
         if (enemy.health <= 0) {
-            enemy.die(_this);
+            enemy.die(_this, ground);
 
             // Spawns a new enemy after 1,5 seconds
             setTimeout(() => {
@@ -98,9 +113,7 @@ function hit(_this) {
  * Spawns a new enemy with the new level status
  **/
 function spawnNewEnemy(_this) {
-    var enemyType = gameStatus.getLevel() % 5 == 0 ? 'boss' : 'minion';
-
-    return new Enemy(_this, gameStatus.levelUp(), enemyType);
+    return new Enemy(_this, gameStatus);
 }
 
 /**
@@ -108,11 +121,11 @@ function spawnNewEnemy(_this) {
  **/
 function createHitText(_this, damage, isCriticalHit, randomPositiveNumber) {
     // Text configuration
-    hitText = _this.add.text(hero.sprite.x + (Phaser.Math.FloatBetween(-1, 1) * 50), hero.sprite.y - 50 - (randomPositiveNumber * 50), damage, {
+    hitText = _this.add.text(hero.sprite.x + (Phaser.Math.FloatBetween(-1, 0.5) * 40), hero.sprite.y - 50 - (randomPositiveNumber * 40), damage, {
         color: isCriticalHit ? '#e3bf14' : '#b62e2e',
-        fontSize: isCriticalHit ? '36px' : '26px',
+        fontSize: isCriticalHit ? '32px' : '26px',
         fontFamily: 'Courier, Consolas, serif',
-        strokeThickness: 3,
+        strokeThickness: 2,
         stroke: isCriticalHit ? '#885a0b' : '#320202'
     });
 
@@ -122,7 +135,7 @@ function createHitText(_this, damage, isCriticalHit, randomPositiveNumber) {
     // Animation
     _this.tweens.add({
         targets: [hitText],
-        alpha: { value: 0, duration: 1500, ease: 'Power1' },
+        alpha: { value: 0, duration: 2000, ease: 'Power1' },
         y: { value: hitText.y - (randomPositiveNumber * 50), duration: 1000, ease: 'Power1' },
         yoyo: false,
         loop: 0,

@@ -1,11 +1,16 @@
 /**
  * Enemy class
  **/
-var Enemy = function (_this, health, type) {
+var Enemy = function (_this, gameStatus) {
     // Is dead flag
     this.isDead = false;
 
+    // Enemy type
+    this.type = gameStatus.getLevel() % 5 == 0 ? 'boss' : 'minion';
+
     // Health information
+    health = gameStatus.levelUp(this.type);
+
     this.health = health;
     this.maxHealth = health;
 
@@ -16,28 +21,44 @@ var Enemy = function (_this, health, type) {
     this.enemies = this.setEnemies();
 
     // Creates the sprite
-    this.sprite = this.setUpNewEnemy(_this, bounds, type);
+    this.sprite = this.setUpNewEnemy(_this, bounds);
+    console.log(this.sprite);
+    this.sprite.body.setAllowGravity(false);
     this.sprite.depth = 1;
+    this.sprite.setAlpha(0);
+
+    _this.tweens.add({
+        targets: this.sprite,
+        alpha: { value: 1, duration: 300, ease: 'Power1' },
+        yoyo: false,
+        loop: 0
+    });
 
     // Animations
-    this.setUpAnimations(_this, bounds, type);
+    this.setUpAnimations(_this, bounds);
 
     // Creates the health bar
     this.healthBar = _this.add.text(0, 0, this.health + '/' + this.maxHealth, {
         color: '#b62e2e',
         fontSize: '20px',
         fontFamily: 'Courier, Consolas, serif',
-        strokeThickness: 3,
+        strokeThickness: 2,
         stroke: '#320202',
         align: 'center'
     });
 
     // Aligns the health bar text
-    this.healthBar.setPosition(bounds.centerX + this.enemies[type].offsetX, this.sprite.y - ((this.sprite.height * this.enemies[type].scale) / 2));
+    this.healthBar.setPosition(bounds.centerX + this.enemies[this.type].offsetX, this.sprite.y - ((this.sprite.height * this.enemies[this.type].scale) / 2));
     this.healthBar.setOrigin(0.5, 0.5);
 
     // Set z alignment
     this.healthBar.setDepth(1);
+
+    this.coinGroup = _this.physics.add.group({
+        bounceX: 0.35,
+        bounceY: 0.5,
+        collideWorldBounds: true
+    });
 }
 
 /**
@@ -53,6 +74,33 @@ Enemy.prototype.updateHealthBar = function () {
 Enemy.prototype.die = function (_this) {
     this.isDead = true;
 
+    // Creates the coins group
+    this.coinGroup.createMultiple({
+        key: 'chrono-tapper',
+        frame: 'gold-coin-00.png',
+        frameQuantity: this.type == 'minion' ? 5 : 15
+    });
+
+    this.coinGroup.getChildren().forEach((e) => {
+        e.setVelocityX(Phaser.Math.FloatBetween(-1, 1) * 100);
+        e.body.setDrag(100, 5);
+    });
+
+    // Align the coins
+    Phaser.Actions.PlaceOnLine(this.coinGroup.getChildren(), new Phaser.Geom.Line(this.sprite.x - 20, this.sprite.y - 10, this.sprite.x + 20, this.sprite.y + 10));
+
+    // Do the coins fade out animation
+    _this.tweens.add({
+        targets: this.coinGroup.getChildren(),
+        alpha: { value: 0, duration: 2000, ease: 'Power1' },
+        yoyo: false,
+        loop: 0,
+        onComplete: () => {
+            this.coinGroup.clear(true, true);
+        }
+    });
+
+    // Fade out the health bar
     _this.tweens.add({
         targets: [this.sprite, this.healthBar],
         alpha: { value: 0, duration: 400, ease: 'Power1' },
@@ -86,15 +134,14 @@ Enemy.prototype.hit = function (_this) {
 /**
  * 
  * @param {object} _this
- * @param {object} bounds 
- * @param {string} type 
+ * @param {object} bounds
  */
-Enemy.prototype.setUpNewEnemy = function (_this, bounds, type) {
-    if (type === 'boss') {
+Enemy.prototype.setUpNewEnemy = function (_this, bounds) {
+    if (this.type === 'boss') {
         this.health = this.maxHealth *= 5;
     }
 
-    return _this.physics.add.sprite(bounds.centerX + 5, bounds.centerY + 5, 'chrono-tapper', this.enemies[type].key + '-00.png');
+    return _this.physics.add.sprite(bounds.centerX + 5, bounds.centerY + 5, 'chrono-tapper', this.enemies[this.type].key + '-00.png');
 }
 
 /**
@@ -103,8 +150,8 @@ Enemy.prototype.setUpNewEnemy = function (_this, bounds, type) {
  * @param {object} bounds
  * @param {string} type 
  */
-Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
-    var enemy = this.enemies[type];
+Enemy.prototype.setUpAnimations = function (_this, bounds) {
+    var enemy = this.enemies[this.type];
 
     // Only creates the animation if it doesn't exists
     if (!_this.anims.get(enemy.key)) {
@@ -119,13 +166,13 @@ Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
     }
 
     // Scale
-    this.sprite.setScale(this.enemies[type].scale);
+    this.sprite.setScale(this.enemies[this.type].scale);
 
     // Position
-    this.sprite.setPosition(bounds.centerX + this.enemies[type].offsetX, bounds.centerY + this.enemies[type].offsetY)
+    this.sprite.setPosition(bounds.centerX + this.enemies[this.type].offsetX, bounds.centerY + this.enemies[this.type].offsetY)
 
     // Play the animation
-    this.sprite.anims.play(this.enemies[type].key, true);
+    this.sprite.anims.play(this.enemies[this.type].key, true);
 }
 
 /**
@@ -142,4 +189,8 @@ Enemy.prototype.setEnemies = function () {
             scale: 1.25, offsetX: 0, offsetY: 25
         }
     };
+}
+
+Enemy.prototype.getCoinGroup = function () {
+    return this.coinGroup;
 }
