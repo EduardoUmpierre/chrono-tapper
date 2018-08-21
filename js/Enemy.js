@@ -90,6 +90,10 @@ Enemy.prototype.hit = function (_this) {
  * @param {string} type 
  */
 Enemy.prototype.setUpNewEnemy = function (_this, bounds, type) {
+    if (type === 'boss') {
+        this.health = this.maxHealth *= 5;
+    }
+
     return _this.physics.add.sprite(bounds.centerX + 5, bounds.centerY + 5, 'chrono-tapper', this.enemies[type].key + '-00.png');
 }
 
@@ -100,20 +104,27 @@ Enemy.prototype.setUpNewEnemy = function (_this, bounds, type) {
  * @param {string} type 
  */
 Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
-    var item = this.enemies[type];
+    var enemy = this.enemies[type];
 
-    var animationFrames = _this.anims.generateFrameNames('chrono-tapper', {
-        start: item.start, end: item.end, zeroPad: 2, prefix: item.key + '-', suffix: '.png'
-    });
+    // Only creates the animation if it doesn't exists
+    if (!_this.anims.get(enemy.key)) {
+        var animationFrames = _this.anims.generateFrameNames('chrono-tapper', {
+            start: enemy.start, end: enemy.end, zeroPad: 2, prefix: enemy.key + '-', suffix: '.png'
+        });
 
-    _this.anims.create({
-        key: item.key, frames: animationFrames, frameRate: item.frameRate, repeat: item.repeat, yoyo: item.yoyo,
-        delay: item.delay, repeatDelay: item.repeatDelay
-    });
+        _this.anims.create({
+            key: enemy.key, frames: animationFrames, frameRate: enemy.frameRate, repeat: enemy.repeat, yoyo: enemy.yoyo,
+            delay: enemy.delay, repeatDelay: enemy.repeatDelay
+        });
+    }
 
+    // Scale
     this.sprite.setScale(this.enemies[type].scale);
+
+    // Position
     this.sprite.setPosition(bounds.centerX + this.enemies[type].offsetX, bounds.centerY + this.enemies[type].offsetY)
 
+    // Play the animation
     this.sprite.anims.play(this.enemies[type].key, true);
 }
 

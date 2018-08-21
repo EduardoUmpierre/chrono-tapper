@@ -80,7 +80,7 @@ function hit(_this) {
         enemy.hit(_this);
         enemy.health -= damage;
 
-        console.log(enemy.health);
+        console.info('Enemy HP: ' + enemy.health, ' Level: ' + gameStatus.getLevel());
 
         // If the enemy is out of health, destroys it
         if (enemy.health <= 0) {
