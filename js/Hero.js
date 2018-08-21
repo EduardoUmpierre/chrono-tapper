@@ -1,7 +1,7 @@
 /**
  * Hero class
  **/
-var Hero = function(_this) {
+var Hero = function (_this) {
     // Hero stats
     this.criticalChance = 75;
     this.damage = 1000;
@@ -24,6 +24,6 @@ var Hero = function(_this) {
 /**
  * Attack function - plays the attack animation
  **/
-Hero.prototype.attack = function() {
+Hero.prototype.attack = function () {
     this.sprite.anims.play('hero-attack', true);
 }

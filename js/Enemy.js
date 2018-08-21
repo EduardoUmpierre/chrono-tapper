@@ -11,7 +11,7 @@ var Enemy = function (_this, health, type) {
 
     // Get the world bounds
     var bounds = _this.physics.world.bounds;
-    
+
     // Set the enemies config
     this.enemies = this.setEnemies();
 
@@ -106,9 +106,9 @@ Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
         start: item.start, end: item.end, zeroPad: 2, prefix: item.key + '-', suffix: '.png'
     });
 
-    _this.anims.create({ 
-        key: item.key, frames: animationFrames, frameRate: item.frameRate, repeat: item.repeat, yoyo: item.yoyo, 
-        delay: item.delay, repeatDelay: item.repeatDelay 
+    _this.anims.create({
+        key: item.key, frames: animationFrames, frameRate: item.frameRate, repeat: item.repeat, yoyo: item.yoyo,
+        delay: item.delay, repeatDelay: item.repeatDelay
     });
 
     this.sprite.setScale(this.enemies[type].scale);
@@ -120,7 +120,7 @@ Enemy.prototype.setUpAnimations = function (_this, bounds, type) {
 /**
  * 
  */
-Enemy.prototype.setEnemies = function() {
+Enemy.prototype.setEnemies = function () {
     return {
         boss: {
             start: 0, end: 9, key: 'sorcerer-attack', frameRate: 6, repeat: -1, yoyo: true, delay: 1000, repeatDelay: 3000,
